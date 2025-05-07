@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INSURGÊNCIE</title>
+    <style>
+        :root {
+            --hero-red: #8B0000;
+            --insurgent-blue: #00008B;
+            --glitch-white: #ffffff;
+            --black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--glitch-white);
+            overflow-x: hidden;
+        }
+
+        .landing-page {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(45deg, var(--hero-red), var(--insurgent-blue));
+            overflow: hidden;
+        }
+
+        .title {
+            font-size: 5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .title:hover {
+            animation: glitch 0.3s infinite;
+        }
+
+        .buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 2px solid var(--glitch-white);
+            color: var(--glitch-white);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--glitch-white);
+            color: var(--black);
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 2rem;
+            display: none;
+        }
+
+        .heroes {
+            background-color: var(--hero-red);
+        }
+
+        .insurgents {
+            background-color: var(--insurgent-blue);
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .character-card {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1.5rem;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        .glitch-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .glitch-text {
+            color: var(--glitch-white);
+            font-size: 2rem;
+            animation: glitch 0.3s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-page">
+        <h1 class="title">INSURGÊNCIE</h1>
+        <div class="buttons">
+            <button class="btn" onclick="showSection('insurgents')">Ver Resistência</button>
+            <button class="btn" onclick="showSection('heroes')">Ver Heróis</button>
+        </div>
+    </div>
+
+    <div class="glitch-overlay">
+        <div class="glitch-text">ACESSO INTERDITADO / REALIDADE CORROMPIDA</div>
+    </div>
+
+    <section id="heroes" class="section heroes">
+        <h2>Heróis</h2>
+        <div class="character-grid">
+            <!-- Hero cards will be added here -->
+        </div>
+    </section>
+
+    <section id="insurgents" class="section insurgents">
+        <h2>Resistência</h2>
+        <div class="character-grid">
+            <!-- Insurgent cards will be added here -->
+        </div>
+    </section>
+
+    <script>
+        const heroes = [
+            {
+                name: "Paladin",
+                powers: "Superforça, invulnerabilidade",
+                age: 42,
+                description: "Líder do grupo. Adorado pela mídia, mas com um passado repleto de massacres encobertos."
+            },
+            {
+                name: "Lumina",
+                powers: "Manipulação de luz, cega inimigos",
+                age: 28,
+                description: "Ícone fashion e heroína pop. Usa os poderes para vigilância totalitária."
+            },
+            {
+                name: "Torque",
+                powers: "Velocidade extrema",
+                age: 34,
+                description: "Faz missões secretas de eliminação. Seus rastros são sempre apagados."
+            },
+            {
+                name: "Mirage",
+                powers: "Ilusões mentais e controle emocional",
+                age: 39,
+                description: "Manipula a opinião pública e interfere em protestos com ilusões de paz."
+            },
+            {
+                name: "Aegis",
+                powers: "Campo de força impenetrável",
+                age: 50,
+                description: "Segurança pessoal do presidente e censor de comunicação."
+            },
+            {
+                name: "Nova Prime",
+                powers: "Manipulação de energia nuclear",
+                age: 26,
+                description: "Jovem prodígio criada em laboratório. Arma de destruição em massa disfarçada de heroína."
+            }
+        ];
+
+        const insurgents = [
+            {
+                name: "Rael",
+                powers: "Desativa tecnologia com toque",
+                age: 31,
+                description: "Ex-membro do sistema, agora caçado. Mestre em infiltração."
+            },
+            {
+                name: "Hexa",
+                powers: "Controle de algoritmos e IA",
+                age: 23,
+                description: "Hacker lendária, comanda uma rede de dados rebelde."
+            },
+            {
+                name: "Kairo",
+                powers: "Manipula tempo em curtos pulsos",
+                age: 40,
+                description: "Sobrevivente de uma guerra encoberta. Usa os segundos que manipula para salvar vidas."
+            },
+            {
+                name: "Vanta",
+                powers: "Invisibilidade nas sombras",
+                age: 29,
+                description: "Especialista em assassinatos táticos. Nunca vista, sempre temida."
+            },
+            {
+                name: "Ashira",
+                powers: "Eco-sonar e leitura térmica",
+                age: 35,
+                description: "Líder tática. Cega, mas vê mais do que qualquer um."
+            },
+            {
+                name: "Dente de Vidro",
+                powers: "Clonagem corporal por curto tempo",
+                age: 27,
+                description: "Ex-criminoso que virou símbolo de revolução. Criado nas ruas, moldado pela guerra."
+            }
+        ];
+
+        function createCharacterCard(character) {
+            return `
+                <div class="character-card">
+                    <h3>${character.name}</h3>
+                    <p><strong>Poderes:</strong> ${character.powers}</p>
+                    <p><strong>Idade:</strong> ${character.age}</p>
+                    <p>${character.description}</p>
+                </div>
+            `;
+        }
+
+        function populateSections() {
+            document.querySelector('#heroes .character-grid').innerHTML = heroes.map(createCharacterCard).join('');
+            document.querySelector('#insurgents .character-grid').innerHTML = insurgents.map(createCharacterCard).join('');
+        }
+
+        function showSection(sectionId) {
+            const overlay = document.querySelector('.glitch-overlay');
+            overlay.style.display = 'flex';
+            
+            setTimeout(() => {
+                document.querySelector('.landing-page').style.display = 'none';
+                document.querySelectorAll('.section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById(sectionId).style.display = 'block';
+                overlay.style.display = 'none';
+            }, 1000);
+        }
+
+        // Initialize the page
+        populateSections();
+    </script>
+</body>
+</html> 
