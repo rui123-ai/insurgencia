@@ -57,7 +57,8 @@
         }
 
         .title:hover {
-            animation: glitch 0.3s infinite;
+            transform: scale(1.02);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
         }
 
         .content-container {
@@ -198,21 +199,9 @@
                 transform: translate(0);
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             }
-            20% {
-                transform: translate(-2px, 2px);
-                text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
-            }
-            40% {
-                transform: translate(-2px, -2px);
-                text-shadow: -2px -2px 10px rgba(0, 0, 255, 0.5);
-            }
-            60% {
-                transform: translate(2px, 2px);
-                text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
-            }
-            80% {
-                transform: translate(2px, -2px);
-                text-shadow: -2px -2px 10px rgba(0, 0, 255, 0.5);
+            50% {
+                transform: translate(0);
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
             }
             100% {
                 transform: translate(0);
@@ -250,7 +239,7 @@
                 age: 42,
                 description: "Líder do grupo. Adorado pela mídia, mas com um passado repleto de massacres encobertos.",
                 icon: "fa-shield-halved",
-                image: "https://i.imgur.com/JQKqX5Y.jpg"
+                image: "images/chris.jpg"
             },
             {
                 name: "Osmond Kelly",
@@ -259,7 +248,7 @@
                 age: 28,
                 description: "Ícone fashion e heroína pop. Usa os poderes para vigilância totalitária.",
                 icon: "fa-sun",
-                image: "https://i.imgur.com/8XZQY5Y.jpg"
+                image: "images/osmond.jpeg"
             },
             {
                 name: "Paul Ekman",
@@ -268,7 +257,7 @@
                 age: 34,
                 description: "Faz missões secretas de eliminação. Seus rastros são sempre apagados.",
                 icon: "fa-bolt",
-                image: "https://i.imgur.com/L2XZQ5Y.jpg"
+                image: "images/paul.jpg"
             },
             {
                 name: "Teresa d'Avila",
@@ -277,7 +266,7 @@
                 age: 39,
                 description: "Manipula a opinião pública e interfere em protestos com ilusões de paz.",
                 icon: "fa-wand-magic-sparkles",
-                image: "https://i.imgur.com/M3XZQ5Y.jpg"
+                image: "images/teresa.jpg"
             },
             {
                 name: "Senni Salminem",
@@ -286,7 +275,7 @@
                 age: 50,
                 description: "Segurança pessoal do presidente e censor de comunicação.",
                 icon: "fa-shield",
-                image: "https://i.imgur.com/N4XZQ5Y.jpg"
+                image: "images/senni.jpg"
             },
             {
                 name: "Herny Fermi",
@@ -295,7 +284,7 @@
                 age: 45,
                 description: "Guardião da ordem, com poderes místicos de origem antiga. Sua armadura dourada é indestrutível.",
                 icon: "fa-crown",
-                image: "https://i.imgur.com/V2XZQ5Y.jpg"
+                image: "images/herny.jpg"
             }
         ];
 
