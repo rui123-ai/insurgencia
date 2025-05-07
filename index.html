@@ -11,6 +11,7 @@
             --insurgent-blue: #00008B;
             --glitch-white: #ffffff;
             --black: #000000;
+            --gold: #FFD700;
         }
 
         * {
@@ -24,6 +25,10 @@
             background-color: var(--black);
             color: var(--glitch-white);
             overflow-x: hidden;
+            background-image: 
+                linear-gradient(45deg, rgba(139, 0, 0, 0.1) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0, 0, 139, 0.1) 25%, transparent 25%);
+            background-size: 60px 60px;
         }
 
         .landing-page {
@@ -32,7 +37,6 @@
             flex-direction: column;
             align-items: center;
             position: relative;
-            background: var(--black);
             padding: 2rem;
         }
 
@@ -46,6 +50,10 @@
             margin-bottom: 2rem;
             text-align: center;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            background: linear-gradient(45deg, var(--hero-red), var(--insurgent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 1rem;
         }
 
         .title:hover {
@@ -53,30 +61,31 @@
         }
 
         .content-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             width: 100%;
             max-width: 1800px;
-            gap: 2rem;
+            gap: 3rem;
             position: relative;
+            padding: 2rem;
         }
 
         .section {
-            flex: 1;
-            padding: 2rem;
             position: relative;
             min-height: 80vh;
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
         .heroes {
-            background-color: var(--hero-red);
-            border-radius: 10px 0 0 10px;
-            box-shadow: 5px 0 15px rgba(139, 0, 0, 0.5);
+            border: 2px solid var(--hero-red);
         }
 
         .insurgents {
-            background-color: var(--insurgent-blue);
-            border-radius: 0 10px 10px 0;
-            box-shadow: -5px 0 15px rgba(0, 0, 139, 0.5);
+            border: 2px solid var(--insurgent-blue);
         }
 
         .section-title {
@@ -85,30 +94,31 @@
             text-align: center;
             text-transform: uppercase;
             position: relative;
-            padding-bottom: 1rem;
+            padding: 1rem;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--glitch-white);
+        .heroes .section-title {
+            color: var(--hero-red);
+            text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+        }
+
+        .insurgents .section-title {
+            color: var(--insurgent-blue);
+            text-shadow: 0 0 10px rgba(0, 0, 139, 0.5);
         }
 
         .character-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            padding: 2rem;
         }
 
         .character-card {
             background: rgba(0, 0, 0, 0.7);
             padding: 1.5rem;
-            border-radius: 5px;
+            border-radius: 15px;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
@@ -117,72 +127,70 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
 
         .character-image {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 1rem;
-            border: 3px solid var(--glitch-white);
+            border: 4px solid var(--glitch-white);
             transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
         .heroes .character-image {
-            border-color: #ff4444;
+            border-color: var(--hero-red);
         }
 
         .insurgents .character-image {
-            border-color: #4444ff;
+            border-color: var(--insurgent-blue);
         }
 
-        .character-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: 0.5s;
+        .character-title {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin: 0.5rem 0;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
         }
 
         .character-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .character-card:hover::before {
-            transform: translateX(100%);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .character-card:hover .character-image {
             transform: scale(1.05);
-            box-shadow: 0 0 20px currentColor;
-        }
-
-        .character-card:hover .character-icon {
-            transform: scale(1.1);
-            animation: iconGlow 1s infinite;
+            box-shadow: 0 0 30px currentColor;
         }
 
         .character-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
             color: var(--glitch-white);
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
         }
 
         .character-card p {
             margin: 0.5rem 0;
-            line-height: 1.4;
+            line-height: 1.6;
         }
 
         .character-card strong {
             color: var(--glitch-white);
             text-shadow: 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 1200px) {
+            .content-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                margin-bottom: 2rem;
+            }
         }
 
         @keyframes glitch {
@@ -211,45 +219,12 @@
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             }
         }
-
-        @keyframes iconGlow {
-            0% { text-shadow: 0 0 10px currentColor; }
-            50% { text-shadow: 0 0 20px currentColor; }
-            100% { text-shadow: 0 0 10px currentColor; }
-        }
-
-        .divider {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--glitch-white);
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        @media (max-width: 1200px) {
-            .content-container {
-                flex-direction: column;
-            }
-
-            .heroes, .insurgents {
-                border-radius: 10px;
-                margin-bottom: 2rem;
-            }
-
-            .divider {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="landing-page">
         <h1 class="title">INSURGÊNCIA</h1>
         <div class="content-container">
-            <div class="divider"></div>
             <section class="section heroes">
                 <h2 class="section-title">Heróis</h2>
                 <div class="character-grid">
@@ -312,6 +287,15 @@
                 description: "Segurança pessoal do presidente e censor de comunicação.",
                 icon: "fa-shield",
                 image: "https://i.imgur.com/N4XZQ5Y.jpg"
+            },
+            {
+                name: "Herny Fermi",
+                title: "Centurião Dourado",
+                powers: "Manipulação de energia dourada, proteção divina",
+                age: 45,
+                description: "Guardião da ordem, com poderes místicos de origem antiga. Sua armadura dourada é indestrutível.",
+                icon: "fa-crown",
+                image: "https://i.imgur.com/V2XZQ5Y.jpg"
             }
         ];
 
@@ -372,7 +356,7 @@
                     <img src="${character.image}" alt="${character.name}" class="character-image">
                     <i class="fa-solid ${character.icon} character-icon"></i>
                     <h3>${character.name}</h3>
-                    <p class="character-title"><strong>Trajado:</strong> ${character.title}</p>
+                    <p class="character-title">${character.title}</p>
                     <p><strong>Poderes:</strong> ${character.powers}</p>
                     <p><strong>Idade:</strong> ${character.age}</p>
                     <p>${character.description}</p>
