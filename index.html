@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INSURGÊNCIA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --hero-red: #8B0000;
@@ -112,6 +113,26 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .character-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--glitch-white);
+            text-shadow: 0 0 10px currentColor;
+            transition: all 0.3s ease;
+        }
+
+        .heroes .character-icon {
+            color: #ff4444;
+        }
+
+        .insurgents .character-icon {
+            color: #4444ff;
         }
 
         .character-card::before {
@@ -133,6 +154,11 @@
 
         .character-card:hover::before {
             transform: translateX(100%);
+        }
+
+        .character-card:hover .character-icon {
+            transform: scale(1.1);
+            animation: iconGlow 1s infinite;
         }
 
         .character-card h3 {
@@ -177,6 +203,12 @@
                 transform: translate(0);
                 text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             }
+        }
+
+        @keyframes iconGlow {
+            0% { text-shadow: 0 0 10px currentColor; }
+            50% { text-shadow: 0 0 20px currentColor; }
+            100% { text-shadow: 0 0 10px currentColor; }
         }
 
         .divider {
@@ -233,37 +265,43 @@
                 name: "Paladin",
                 powers: "Superforça, invulnerabilidade",
                 age: 42,
-                description: "Líder do grupo. Adorado pela mídia, mas com um passado repleto de massacres encobertos."
+                description: "Líder do grupo. Adorado pela mídia, mas com um passado repleto de massacres encobertos.",
+                icon: "fa-shield-halved"
             },
             {
                 name: "Lumina",
                 powers: "Manipulação de luz, cega inimigos",
                 age: 28,
-                description: "Ícone fashion e heroína pop. Usa os poderes para vigilância totalitária."
+                description: "Ícone fashion e heroína pop. Usa os poderes para vigilância totalitária.",
+                icon: "fa-sun"
             },
             {
                 name: "Torque",
                 powers: "Velocidade extrema",
                 age: 34,
-                description: "Faz missões secretas de eliminação. Seus rastros são sempre apagados."
+                description: "Faz missões secretas de eliminação. Seus rastros são sempre apagados.",
+                icon: "fa-bolt"
             },
             {
                 name: "Mirage",
                 powers: "Ilusões mentais e controle emocional",
                 age: 39,
-                description: "Manipula a opinião pública e interfere em protestos com ilusões de paz."
+                description: "Manipula a opinião pública e interfere em protestos com ilusões de paz.",
+                icon: "fa-wand-magic-sparkles"
             },
             {
                 name: "Aegis",
                 powers: "Campo de força impenetrável",
                 age: 50,
-                description: "Segurança pessoal do presidente e censor de comunicação."
+                description: "Segurança pessoal do presidente e censor de comunicação.",
+                icon: "fa-shield"
             },
             {
                 name: "Nova Prime",
                 powers: "Manipulação de energia nuclear",
                 age: 26,
-                description: "Jovem prodígio criada em laboratório. Arma de destruição em massa disfarçada de heroína."
+                description: "Jovem prodígio criada em laboratório. Arma de destruição em massa disfarçada de heroína.",
+                icon: "fa-atom"
             }
         ];
 
@@ -272,43 +310,50 @@
                 name: "Rael",
                 powers: "Desativa tecnologia com toque",
                 age: 31,
-                description: "Ex-membro do sistema, agora caçado. Mestre em infiltração."
+                description: "Ex-membro do sistema, agora caçado. Mestre em infiltração.",
+                icon: "fa-hand-sparkles"
             },
             {
                 name: "Hexa",
                 powers: "Controle de algoritmos e IA",
                 age: 23,
-                description: "Hacker lendária, comanda uma rede de dados rebelde."
+                description: "Hacker lendária, comanda uma rede de dados rebelde.",
+                icon: "fa-microchip"
             },
             {
                 name: "Kairo",
                 powers: "Manipula tempo em curtos pulsos",
                 age: 40,
-                description: "Sobrevivente de uma guerra encoberta. Usa os segundos que manipula para salvar vidas."
+                description: "Sobrevivente de uma guerra encoberta. Usa os segundos que manipula para salvar vidas.",
+                icon: "fa-clock"
             },
             {
                 name: "Vanta",
                 powers: "Invisibilidade nas sombras",
                 age: 29,
-                description: "Especialista em assassinatos táticos. Nunca vista, sempre temida."
+                description: "Especialista em assassinatos táticos. Nunca vista, sempre temida.",
+                icon: "fa-moon"
             },
             {
                 name: "Ashira",
                 powers: "Eco-sonar e leitura térmica",
                 age: 35,
-                description: "Líder tática. Cega, mas vê mais do que qualquer um."
+                description: "Líder tática. Cega, mas vê mais do que qualquer um.",
+                icon: "fa-radar"
             },
             {
                 name: "Dente de Vidro",
                 powers: "Clonagem corporal por curto tempo",
                 age: 27,
-                description: "Ex-criminoso que virou símbolo de revolução. Criado nas ruas, moldado pela guerra."
+                description: "Ex-criminoso que virou símbolo de revolução. Criado nas ruas, moldado pela guerra.",
+                icon: "fa-user-group"
             }
         ];
 
         function createCharacterCard(character) {
             return `
                 <div class="character-card">
+                    <i class="fa-solid ${character.icon} character-icon"></i>
                     <h3>${character.name}</h3>
                     <p><strong>Poderes:</strong> ${character.powers}</p>
                     <p><strong>Idade:</strong> ${character.age}</p>
