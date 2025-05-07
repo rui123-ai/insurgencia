@@ -119,20 +119,22 @@
             text-align: center;
         }
 
-        .character-icon {
-            font-size: 3rem;
+        .character-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
             margin-bottom: 1rem;
-            color: var(--glitch-white);
-            text-shadow: 0 0 10px currentColor;
+            border: 3px solid var(--glitch-white);
             transition: all 0.3s ease;
         }
 
-        .heroes .character-icon {
-            color: #ff4444;
+        .heroes .character-image {
+            border-color: #ff4444;
         }
 
-        .insurgents .character-icon {
-            color: #4444ff;
+        .insurgents .character-image {
+            border-color: #4444ff;
         }
 
         .character-card::before {
@@ -154,6 +156,11 @@
 
         .character-card:hover::before {
             transform: translateX(100%);
+        }
+
+        .character-card:hover .character-image {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px currentColor;
         }
 
         .character-card:hover .character-icon {
@@ -266,42 +273,48 @@
                 powers: "Superforça, invulnerabilidade",
                 age: 42,
                 description: "Líder do grupo. Adorado pela mídia, mas com um passado repleto de massacres encobertos.",
-                icon: "fa-shield-halved"
+                icon: "fa-shield-halved",
+                image: "https://i.imgur.com/JQKqX5Y.jpg"
             },
             {
                 name: "Lumina",
                 powers: "Manipulação de luz, cega inimigos",
                 age: 28,
                 description: "Ícone fashion e heroína pop. Usa os poderes para vigilância totalitária.",
-                icon: "fa-sun"
+                icon: "fa-sun",
+                image: "https://i.imgur.com/8XZQY5Y.jpg"
             },
             {
                 name: "Torque",
                 powers: "Velocidade extrema",
                 age: 34,
                 description: "Faz missões secretas de eliminação. Seus rastros são sempre apagados.",
-                icon: "fa-bolt"
+                icon: "fa-bolt",
+                image: "https://i.imgur.com/L2XZQ5Y.jpg"
             },
             {
                 name: "Mirage",
                 powers: "Ilusões mentais e controle emocional",
                 age: 39,
                 description: "Manipula a opinião pública e interfere em protestos com ilusões de paz.",
-                icon: "fa-wand-magic-sparkles"
+                icon: "fa-wand-magic-sparkles",
+                image: "https://i.imgur.com/M3XZQ5Y.jpg"
             },
             {
                 name: "Aegis",
                 powers: "Campo de força impenetrável",
                 age: 50,
                 description: "Segurança pessoal do presidente e censor de comunicação.",
-                icon: "fa-shield"
+                icon: "fa-shield",
+                image: "https://i.imgur.com/N4XZQ5Y.jpg"
             },
             {
                 name: "Nova Prime",
                 powers: "Manipulação de energia nuclear",
                 age: 26,
                 description: "Jovem prodígio criada em laboratório. Arma de destruição em massa disfarçada de heroína.",
-                icon: "fa-atom"
+                icon: "fa-atom",
+                image: "https://i.imgur.com/O5XZQ5Y.jpg"
             }
         ];
 
@@ -311,48 +324,55 @@
                 powers: "Desativa tecnologia com toque",
                 age: 31,
                 description: "Ex-membro do sistema, agora caçado. Mestre em infiltração.",
-                icon: "fa-hand-sparkles"
+                icon: "fa-hand-sparkles",
+                image: "https://i.imgur.com/P6XZQ5Y.jpg"
             },
             {
                 name: "Hexa",
                 powers: "Controle de algoritmos e IA",
                 age: 23,
                 description: "Hacker lendária, comanda uma rede de dados rebelde.",
-                icon: "fa-microchip"
+                icon: "fa-microchip",
+                image: "https://i.imgur.com/Q7XZQ5Y.jpg"
             },
             {
                 name: "Kairo",
                 powers: "Manipula tempo em curtos pulsos",
                 age: 40,
                 description: "Sobrevivente de uma guerra encoberta. Usa os segundos que manipula para salvar vidas.",
-                icon: "fa-clock"
+                icon: "fa-clock",
+                image: "https://i.imgur.com/R8XZQ5Y.jpg"
             },
             {
                 name: "Vanta",
                 powers: "Invisibilidade nas sombras",
                 age: 29,
                 description: "Especialista em assassinatos táticos. Nunca vista, sempre temida.",
-                icon: "fa-moon"
+                icon: "fa-moon",
+                image: "https://i.imgur.com/S9XZQ5Y.jpg"
             },
             {
                 name: "Ashira",
                 powers: "Eco-sonar e leitura térmica",
                 age: 35,
                 description: "Líder tática. Cega, mas vê mais do que qualquer um.",
-                icon: "fa-radar"
+                icon: "fa-radar",
+                image: "https://i.imgur.com/T0XZQ5Y.jpg"
             },
             {
                 name: "Dente de Vidro",
                 powers: "Clonagem corporal por curto tempo",
                 age: 27,
                 description: "Ex-criminoso que virou símbolo de revolução. Criado nas ruas, moldado pela guerra.",
-                icon: "fa-user-group"
+                icon: "fa-user-group",
+                image: "https://i.imgur.com/U1XZQ5Y.jpg"
             }
         ];
 
         function createCharacterCard(character) {
             return `
                 <div class="character-card">
+                    <img src="${character.image}" alt="${character.name}" class="character-image">
                     <i class="fa-solid ${character.icon} character-icon"></i>
                     <h3>${character.name}</h3>
                     <p><strong>Poderes:</strong> ${character.powers}</p>
